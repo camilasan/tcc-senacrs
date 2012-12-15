@@ -1,0 +1,26 @@
+:Enter name:_KLineEdit	{buddy=':Name – Umbrello UML Modeller.Enter name:_QLabel' type='KLineEdit' unnamed='1' visible='1'}
+:Name – Umbrello UML Modeller.Enter name:_QLabel	{text='Enter name:' type='QLabel' unnamed='1' visible='1' window=':Name – Umbrello UML Modeller_KInputDialogHelper'}
+:Name – Umbrello UML Modeller.OK_KPushButton	{text='OK' type='KPushButton' unnamed='1' visible='1' window=':Name – Umbrello UML Modeller_KInputDialogHelper'}
+:Name – Umbrello UML Modeller_KInputDialogHelper	{type='KInputDialogHelper' unnamed='1' visible='1' windowTitle='Name – Umbrello UML Modeller'}
+:Name:_KLineEdit	{parentWidget=':Name:_KUrlComboBox' type='KLineEdit' unnamed='1' visible='1'}
+:Name:_KUrlComboBox	{buddy=':Save As – Umbrello UML Modeller.Name:_QLabel' type='KUrlComboBox' unnamed='1' visible='1'}
+:Save As – Umbrello UML Modeller.Name:_QLabel	{text='Name:' type='QLabel' unnamed='1' visible='1' window=':Save As – Umbrello UML Modeller_KFileDialog'}
+:Save As – Umbrello UML Modeller.Save_KPushButton	{text='Save' type='KPushButton' unnamed='1' visible='1' window=':Save As – Umbrello UML Modeller_KFileDialog'}
+:Save As – Umbrello UML Modeller_KDirOperatorDetailView	{type='KDirOperatorDetailView' unnamed='1' visible='1' window=':Save As – Umbrello UML Modeller_KFileDialog'}
+:Save As – Umbrello UML Modeller_KFileDialog	{type='KFileDialog' unnamed='1' visible='1' windowTitle='Save As – Umbrello UML Modeller'}
+:Save As – Umbrello UML Modeller_KUrlComboBox	{occurrence='2' type='KUrlComboBox' unnamed='1' visible='1' window=':Save As – Umbrello UML Modeller_KFileDialog'}
+:Untitled [modified] – Umbrello UML Modeller.Class_QToolButton	{text='Class' type='QToolButton' unnamed='1' visible='1' window=':Untitled [modified] – Umbrello UML Modeller_UMLApp'}
+:Untitled [modified] – Umbrello UML Modeller.Directional Association_QToolButton	{text='Directional Association' type='QToolButton' unnamed='1' visible='1' window=':Untitled [modified] – Umbrello UML Modeller_UMLApp'}
+:Untitled [modified] – Umbrello UML Modeller.Implements_QToolButton	{text='Implements' type='QToolButton' unnamed='1' visible='1' window=':Untitled [modified] – Umbrello UML Modeller_UMLApp'}
+:Untitled [modified] – Umbrello UML Modeller.Save_QToolButton	{text='Save' type='QToolButton' unnamed='1' visible='1' window=':Untitled [modified] – Umbrello UML Modeller_UMLApp'}
+:Untitled [modified] – Umbrello UML Modeller.Select_QToolButton	{text='Select' type='QToolButton' unnamed='1' visible='1' window=':Untitled [modified] – Umbrello UML Modeller_UMLApp'}
+:Untitled [modified] – Umbrello UML Modeller.qt_tabwidget_stackedwidget_QStackedWidget	{name='qt_tabwidget_stackedwidget' type='QStackedWidget' visible='1' window=':Untitled [modified] – Umbrello UML Modeller_UMLApp'}
+:Untitled [modified] – Umbrello UML Modeller_KTabBar	{type='KTabBar' unnamed='1' visible='1' window=':Untitled [modified] – Umbrello UML Modeller_UMLApp'}
+:Untitled [modified] – Umbrello UML Modeller_UMLApp	{name='MainWindow#1' type='UMLApp' visible='1' windowTitle='Untitled [modified] – Umbrello UML Modeller'}
+:Untitled – Umbrello UML Modeller.Select_QToolButton	{text='Select' type='QToolButton' unnamed='1' visible='1' window=':Untitled – Umbrello UML Modeller_UMLApp'}
+:Untitled – Umbrello UML Modeller.qt_tabwidget_stackedwidget_QStackedWidget	{name='qt_tabwidget_stackedwidget' type='QStackedWidget' visible='1' window=':Untitled – Umbrello UML Modeller_UMLApp'}
+:Untitled – Umbrello UML Modeller_UMLApp	{name='MainWindow#1' type='UMLApp' visible='1' windowTitle='Untitled – Umbrello UML Modeller'}
+:_KLineEdit	{parentWidget=':Save As – Umbrello UML Modeller_KUrlComboBox' type='KLineEdit' unnamed='1' visible='1'}
+:qt_tabwidget_stackedwidget_UMLView	{container=':Untitled – Umbrello UML Modeller.qt_tabwidget_stackedwidget_QStackedWidget' type='UMLView' unnamed='1' visible='1'}
+:qt_tabwidget_stackedwidget_UMLView_2	{container=':Untitled [modified] – Umbrello UML Modeller.qt_tabwidget_stackedwidget_QStackedWidget' type='UMLView' unnamed='1' visible='1'}
+:teste2.xmi – Umbrello UML Modeller_UMLApp	{name='MainWindow#1' type='UMLApp' visible='1' windowTitle='teste2.xmi – Umbrello UML Modeller'}

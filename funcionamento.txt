@@ -1,0 +1,16 @@
+11:31] <tumaix> xiu
+[11:31] <tumaix> o e-mail que mandou hoje de manhã
+[11:31] <tumaix> quando você copia uma classe do indiano que tem algo que você não tem
+[11:31] <tumaix> vai dar aqueles erros.
+[11:40] <camilasan> tumaix: eu sei.
+[11:40] <camilasan> por isso eu falei em ir alterando as outras
+[11:40] <camilasan> como eu disse no email
+[11:43] <tumaix> o importante é saber o que a classe faz ( ou o que o método faltando faz)
+[11:43] <tumaix> sabe se ele deve ou não existir na sua versão?
+[11:43] <tumaix> eu acho que você deve tentar portar o que o indiano  fez pra a sua versão e sua forma de separação de diretórios
+[11:43] <tumaix> e depois sair tirando os erros existentes.
+[11:47] <camilasan> tumaix: ok, thanks :)
+[11:48] <tumaix> por nada.
+
+......................
+

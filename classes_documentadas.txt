@@ -1,0 +1,30 @@
+UMLViewCanvas::Q3Canvas -> QGraphicsScene
+Seta a cor do background do grid. É o view para os diagramas.
+
+
+QGraphicsScene is the closest equivalent to Q3Canvas. 
+The view for the diagrams.
+
+There is no QPixmap based constructor, and the concept of tiles is gone. You can use QGraphicsScene::backgroundBrush to set a brush pattern for the background, or reimplement QGraphicsScene::drawBackground() in a QGraphicsScene subclass (see Porting scenes with tiles). In addition, the QGraphicsScene geometry is provided as a full QRectF. Instead of Q3Canvas(int width, int height), you can use QGraphicsScene(int top, int left, int width, int height).
+
+LinePath::QObject  - seria a linha da Ellipse ja que o Q3CanvasEllipse apenas desenha ellipses cheias.
+Circle::Q3CanvasEllipse -> QGraphicsEllipseItem - desenha a ellipse
+SubsetSymbol::Q3CanvasEllipse -> QGraphicsEllipseItem - seta a enclinação do sub set symbol (do simbolo do meio em um grupo)
+
+
+SeqLineWidget::Q3CanvasLine -> QGraphicsLineItem
+Widget class for graphical representation of sequence lines
+
+UMLView::Q3CanvasView -> QGraphicsView
+ * UMLView instances represent diagrams.
+ * The UMLApp instance manages a QWidgetStack of UMLView instances.
+ * The visible diagram is at the top of stack.
+ * The UMLView class inherits from QCanvasView and it owns the
+ * objects displayed on its related QCanvas (see m_WidgetList.)
+
+UMLWidget::Q3CanvasRectangle -> QGraphicsRectItem
+This is the base class for nearly all graphical widgets.
+
+
+
+

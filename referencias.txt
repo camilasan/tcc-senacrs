@@ -1,0 +1,124 @@
+2 pages about Free Software and KDE
+
+Free/Libre and Open Source Software
+The following section explains Free/Libre and Open Source software ('FLOSS'). First the terms will be quickly explained and relevance of FLOSS will be shown, followed by a more extensive explanation of the concepts behind the license and the way FLOSS is developed within heterogeneous communities.
+
+Copyleft
+Software Libre, Free Software and Open Source are describing the concept of software with a so called 'copyleft' license. Compared to Copyright, copyleft gives the recipient of the software additional rights (1). This paper will make use of the term "Free Software" to encompass the entire width of the FLOSS spectrum and emphasize the philosophy and collaborative development aspects as well as the legal and practical side (2).
+
+In short, copyleft licenses like the GNU Public License grant recipients of the software the rights to:
+(quote)
+    The freedom to run the program, for any purpose (freedom 0).
+    The freedom to study how the program works, and change it to make it do what you wish (freedom 1). Access to the source code is a precondition for this.
+    The freedom to redistribute copies so you can help your neighbor (freedom 2).
+    The freedom to distribute copies of your modified versions to others (freedom 3). By doing this you can give the whole community a chance to benefit from your changes. Access to the source code is a precondition for this.	
+(/quote from 1)
+
+A further important component of the GNU Public License is the following:
+(quote)
+The freedom to redistribute copies must include binary or executable forms of the program, as well as source code, for both modified and unmodified versions. (/quote from 1)
+
+In effect, this means that code, once published under the GNU Public License, will forever continue to be available under this license, including any modifications which have been made to it. However it does not preclude the author(s) to also make their source code available under other licensing terms, a practice commonly called 'multi licensing'. Multi licensing forms the base of a variety of business models around Free Software (39).
+
+It is important to note that there is a fundamental difference between so called 'freeware' and Free Software. While Free Software is often cheap or free, this is in no way fundamental to the concept. Commercial vendors like Red Hat Linux charge significant amounts of money for licenses of Free Software based products and copyleft licenses do not forbid charging for software or making money on it (34). 
+
+Relevance
+While the reasons behind the creation of Copyleft licenses like the GPL have been mostly ideological (3), the more commercial-oriented (2, 4, 5) term 'open source' has propelled the GPL and similar licenses to silently become a dominant software license in the IT world. The importance of Free Software in education (13, 14) and government (15) has been rising and in 'The State of Open Source (2008) the prominent research firm Garner predicted:
+(quote) "By 2012, more than 90 percent of enterprises will use open source in direct or embedded forms," (quote from 11). Research firm IDC writes in their whitepaper on "Linux in the New Economy" (2009): "IDC projects that Linux-related software growth will lead the industry during the post-recession recovery period, with a 2008-2013 compound annual growth rate (CAGR) of 23.6%. (...) By comparison, the overall market is projected to increase at 5% 2008-2013 CAGR." (quote from 16)
+
+Right now, the vast majority of computing devices, with the exception of so called 'desktop computers', run open source software. This includes mobile phone operating systems like Symbian (30), Android (31), WebOS (32) and Maemo (33, 29); 470 out of the 500 supercomputers run on the Free Software Linux kernel (21, 22, 23) and almost all routers, printers and embedded devices (28) like the Amazon Kindle. Even products which are mostly proprietary in nature often heavily depend on Free Software components like Apple's iPhone, iPad and desktop products. The infrastructure of large companies like Facebook (19, 20), Amazon (24) and Google (25) runs on the Open Source Linux kernel and the majority of websites on the web is served through Free Software web serving software like Apache (16). Free Software development skills are in heavy demand, providing a significant salary bonus (26, 27) of up to 40%. IDC expects Linux and Free Software adoption to keep growing as it is highly compatible with modern trends like Cloud Computing (16).
+
+Concepts behind Free Software
+The Free Software movement was started out of ideological motives by Richard Stallman who later started the GNU project and the Free Software Foundation. The full history can be read on the website of the GNU project (35). The ideological motives can be summarized in a quote from D.B. Martin: "in a world where speech depends on software, Free Speech depends on Free Software". More over, Free Software offers huge advantages for developing economies, promotes the sharing knowledge and strengthens the free market economy (40, 41). Starting in 1991 when the Finnish student Linus Torvalds started the Linux Kernel (36), Free Software has begun to become more and more dominant.
+
+The reasons for the success of Free Software lie in the collaborative development model which increases efficient use of resources and scales far better than proprietary software development models. However it must be noted that modern proprietary development models have incorporated many concepts from Free Software development as is evident in similarities between techniques like Agile Programming and the community development models in Free Software.
+
+The core of how Free Software development works has been explained by Linux Torvalds in his usual bluntness in an interview with Forbes magazine in March 2006: "If you're a mad scientist, you can use GPLv2'd software for your evil plans to take over the world ('Sharks with lasers on their heads!!'), and the GPLv2 just says that you have to give source code back. And that's OK by me. I like sharks with lasers. I just want the mad scientists of the world to pay me back in kind. I made source code available to them, they have to make their changes to it available to me. After that, they can fry me with their shark-mounted lasers all they want." (38)
+
+The GNU license requires licensees to share their changes upon distribution (it is allowed to use GPL software 'in hosue' without sharing anything) (1). This has lead to the emergence of a collaborative development model where a large number of parties work together on a single piece of software. Often these parties are competitors, working with each other as well as independent volunteers under the umbrella of a Foundation or a similar legal form. For examples see the Apache Foundation, the GNOME Foundation and KDE e.V.
+
+Reasons to Collaborate
+Th collaborative models work because there is a strong motivation to work within a project instead of merely doing the minimum required by the license (make the source available upon request). This motivation consists of a variety of more or less relevant reasons, depending on the business model and company in question. They include:
+* The costs of maintaining a particular piece of software over a long period of time grow exponentially. Within a Free Software project these costs are shared.
+* The collaborative project will move faster due to the many contributions of several parties, the rules of collaboration themselves (which force a high code quality standard) and the innovation pushed by the volunteers. Not being part of this means missing out on this progress.
+* Being closely involved in the development process means having influence and having the ability to steer the project in a direction that benefits the company.
+* Many parties use their involvement in Free Software as a form of marketing; the technical crowd involved in Free Software is usually influential in IT related companies.
+* Companies closely involved in a community usually hire from within the community as they can assess the quality of work and knowledge of potential employees.
+
+Individuals contribute to Free Software for a variety of reasons as well, including:
+* curiosity and eagerness to learn new skills; Free Software communities often have a number of very skilled and experienced engineers active who frequently share their knowledge with others and are willing to teach new participants.
+* 'scratch your own itch'; the participant has a certain problem with the piece of software in question and has developed a solution which he/she wants to contribute (to not have to maintain it him/herself).
+* because they are looking for a job; building a 'public cv' in a Free Software community is a powerful way to advertise one self.
+* because they care about Software Freedom; the earlier mentioned ideological reasons.
+* because they enjoy the reputation and position that comes with being a Free Software developer; respect of peers.
+* because they enjoy writing code in a collaborative fashion
+
+Wider impact of Free Software
+
+The philosophy of Free Software has had an impact far beyond the world of IT itself. A prime example are the Creative Commons licenses for artwork and literature, becoming more and more popular among musicians, painters, writers and performers. The Creative Commons project set out create the means to spread knowledge and art more widely for the benefit of all:
+"The idea of universal access to research, education, and culture is made possible by the Internet, but our legal and social systems don’t always allow that idea to be realized." (From the creative commons site 9). There is a growing diversity of Free Culture projects around the world (8).
+
+Free Software could be seen as an example of Crowd Sourcing but far predates that concept; and websites like Wikipedia, arguably most modern, collaborative social media like Facebook, Youtube and Flickr have strong ties to the culture and way of thinking of the Free Software movement.
+
+The KDE Community
+
+KDE has built and delivered Free and Open Source Software for over 15 years. Tens of millions of users around the world have come to appreciate reliable and manageable KDE products. KDE is by most metrics the second largest Free Software community in the world, directly behind the Linux kernel community. Among their products are a huge variety of applications as well as a set of workspaces for mobile and desktop computing and a development platform on which the applications and work spaces are build. KDE develops software mostly for Linux but their products are also available for Windows, Mac OS X and an increasing number of mobile devices. The community consists of about 800 to 1000 active developers and a similar number of contributors to artwork, marketing, translation, website development and other tasks within the project.
+
+KDE works, like many Free Software projects, in a highly decentralized way. The project consists of a large number of mostly-independent teams. Prominent teams are the Plasma team developing the work spaces; the KDE PIM team developing calendar and mail applications and the Artwork and Promo teams. KDE is what is called a 'doocracy'. Decision making is done in public through a combination of meritocratic discussion and the development of (competing) solutions ('talk is cheap; show me the code'). Developers with a long track record in the community often have considerable influence and most applications have a maintainer who makes decisions. However, due to the mostly-volunteer nature of the work (even those paid by companies usually act very independently) it is not possible to tell people what to do and the function of most decision makers is limited to gate keeping.
+
+Project wide decisions are usually made on public, project-wide mailing lists after considerable discussion, or at one of the face to face meetings KDE organizes. KDE has several large yearly meetings, most prominent of which is the yearly 'Akademy' meeting which has over 500 KDE developers attending. Smaller Akademy-like meetings are held yearly in the USA, Brazil and more recently India. Besides these large meetings there are about 30-50 'developer sprints' throughout the year with anywhere between 30-50 participants. These meetings usually bring together the members of one or more teams for an intensive week(end) of discussing and writing code.
+
+These activities are funded by the legal organization behind KDE, KDE e.V. which is in turn supported by many individual and corporate sponsors like HP, Intel, Google and many others. KDE e.V. has no official influence on development and concerns itself with supporting the community in their work as well as protecting the KDE trademarks and providing infrastructure. (42)
+
+1. http://www.gnu.org/philosophy/free-sw.html
+2. http://www.gnu.org/philosophy/open-source-misses-the-point.html
+3. http://www.gnu.org/philosophy/why-free.html
+4. http://www.opensource.org/osd.html
+5. http://en.wikipedia.org/wiki/Open_source
+8. http://freedomdefined.org/
+9. http://creativecommons.org/about
+10. Gartner, The State of Open Source, 2008; 3 April 2008; http://www.gartner.com/DisplayDocument?id=638643
+11. http://www.zdnet.co.uk/news/it-strategy/2008/04/04/gartner-open-source-will-quietly-take-over-39379900/
+12. The Cathedral and the Bazaar: Musings on Linux and Open Source by an Accidental Revolutionary
+O'Reilly & Associates, Inc. Sebastopol, CA, USA ©2001
+ISBN:0596001088 	Eric S. Raymond 
+Online: http://catb.org/~esr/writings/homesteading/cathedral-bazaar/
+13 http://one.laptop.org/about/mission
+14 http://ndos.codeplex.com/
+15 Call for Quality: Open Source Software Quality Observation (2006) 
+istlab.dmst.aueb.gr/~george/pubs/2006-OSS-GKAG/paper.pdf
+Adriaan de Groot1, Sebastian Kügler1, Paul J. Adams2, and Giorgos Gousios
+European research projects, such as COSPA (www.cospa-project.org/) and CALIBRE (www.calibre.ie), have raised awareness of OSS development through speciﬁc targeting of public administration bodies and industrial organisations, especially small and medium enterprises (SMEs).
+16 Research firm IDC http://www.redhat.com/f/pdf/idc-whitepaper-linux-in-new-economy.pdf
+17 http://www.thewhir.com/web-hosting-news/091710_Apache_Hostnames_Increase_by_10M_Netcrafts_September_Web_Server_Survey
+18 http://www.linuxfordevices.com/c/a/News/Watson-wins-in-Jeopardy/
+19 http://centosbr.org/noticias/122
+20 http://www.makeuseof.com/tag/facebook-work-nuts-bolts-technology-explained/ 
+21 http://www.itwire.com/business-it-news/technology/39471-nearly-every-supercomputer-runs-linux
+22 http://www.linuxfordevices.com/c/a/News/Watson-wins-in-Jeopardy/
+23 http://www.forbes.com/2005/03/15/cz_dl_0315linux.html
+24 http://news.cnet.com/2100-1001-275155.html
+25 http://www.linuxjournal.com/article/4196
+26 http://www.itnews.com.au/News/102554,australian-open-source-workers-earn-more-money.aspx
+27 http://www.crn.com/news/channel-programs/206900235/report-open-source-adoption-increases-app-dev-pay.htm
+28 http://www.linuxfordevices.com/c/a/Linux-For-Devices-Articles/Whitepaper-Linux-in-the-Embedded-Systems-Market/
+29 http://techcrunch.com/2010/02/23/smartphone-iphone-sales-2009-gartner/
+30 http://news.cnet.com/8301-13505_3-9975902-16.html
+31 http://developer.android.com/guide/basics/what-is-android.html
+32 http://www.webos-internals.org/wiki/Portal:Accessing_Linux
+33 http://meego.com/about
+34 http://www.gnu.org/philosophy/selling.html
+35 http://www.gnu.org/gnu/gnu.html
+36 https://netfiles.uiuc.edu/rhasan/linux/
+37 http://www.linux.com/archive/feed/118380
+38 http://www.forbes.com/fdc/welcome_mjx.shtml
+39 http://www.linuxinsider.com/story/38172.html
+40 http://nowwhatthe.blogspot.com/2010/06/being-free-why-it-matters.html
+41 http://www.gnu.org/philosophy/shouldbefree.html
+42 kde.org, ev.kde.org, plasma.kde.org, etc
+
+
+
+
+
+

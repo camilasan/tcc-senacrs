@@ -1,0 +1,98 @@
+﻿Introdução
+
+O que é o Umbrello? O Umbrello UML Modeller é uma ferramenta de diagrama UML que pode auxiliá-lo no processo de desenvolvimento de software. Especialmente durante as fases de análise e desenho, o Umbrello UML Modeller lhe auxilia a obter um produto de alta qualidade. A UML pode também ser usada para documentar o desenho de seu software para auxiliá-lo e seus companheiros de desenvolvimento. O software tem suporte aos principais diagramas UML e ainda é possível gerar código a partir dos diagramas.  É um Software Livre gráfica UML (Unified Modeling Language), editor, um dos poucos de seu tipo. A maioria das ferramentas UML são ferramentas proprietárias escrito em Java e Umbrello é escrito em C + + / Qt e construir sobre a base de software poderoso do KDE. Eu percebi o quão interessante é o Umbrello, quando notei que a maioria dos meus professores sugerem ferramentas proprietárias ou um programa genérico de diagramação UML com poucos recursos para estudar UML na aula de faculdade. Muitas empresas usam o UML para ajudá-los a escrever rapidamente aplicações e Umbrello é (tanto quanto eu sei) a única ferramenta Software Livre que pode fazer a geração do código necessário para isso!
+
+Diagrama de Caso de Uso mostra atores (pessoas ou outros usuários do sistema), casos de uso (os cenários onde eles usam o sistema), e seus relacionamentos
+Diagrama de Classe mostra classes e os relacionamentos entre elas
+Diagrama de Sequência mostra objetos e uma sequência das chamadas do método feitas para outros objetos.
+Diagrama de Colaboração mostra objetos e seus relacionamentos, colocando ênfase nos objetos que participam na troca de mensagens
+Diagrama de Estado mostra estados, mudanças de estado e eventos num objeto ou uma parte do sistema
+Diagrama de Atividade mostra atividades e as mudanças de uma atividade para outra com os eventos ocorridos em alguma parte do sistema
+Diagrama de Componente mostra os componentes de programação de alto nível (como KParts ou Java Beans).
+Diagrama de Distribuição mostra as instâncias dos componentes e seus relacionamentos.
+Os Diagramas de Entidade-Associação mostram os dados e as relações e as restrições entre os dados.
+
+
+"A modelagem é a criação de aplicativos de software antes da codificação. Modelagem é uma parte essencial dos projetos de software grandes, e útil para projetos médios e até pequenos também. (...) Usando um modelo, os responsáveis ​​pelo sucesso de um projeto de desenvolvimento de software pode assegurar-se que a funcionalidade do negócio é completa e correta, as necessidades do usuário final sejam cumpridos ea concepção do programa suporta os requisitos de escalabilidade (...) "
+http://www.omg.org/gettingstarted/what_is_uml.htm
+
+É claro que não é apenas a minha faculdade que usa UML, há um monte de empresas que usam ferramentas de UML em seu processo de desenvolvimento, incluindo as empresas onde trabalhei e você pode encontrar mais alguns exemplos aqui.
+
+Então, ter um Software Livre editor UML é muito importante! E o editor Umbrello UML é muito legal:
+
+* Geração automática de código (Ada, C + +, C #, Java, Perl, PHP, Python, Ruby)
+* Importação declasses do projeto (Ada, C + +, apenas IDL, Java, Pascal e Python)
+
+A má notícia é que o Umbrello não recebe muito amor. Foi mais ou menos portado para Qt4 e kdelibs4 mas ainda usa um monte de classes Q3Canvas e tem bugs muito poucos.
+KDE – Interface Gráfica para Linux – o Umbrello faz parte do KDE SDK – pacotes de softwares para desenvolvimento como o Kdevelop
+KDELibs
+SL – software de distribuição livre a gratuita e código aberto
+Qt – Framework C++ mantido pela Nokia
+C++ - linguagem de programação
+
+
+Problema:
+. QCanvas: O Umbrello é a ferramenta de modelagem UML (Unified Modeling Language) distribuída com as ferramentas de desenvolvimento do KDE. O Umbrello foi escrito inicialmente em C++ para sistemas Unix pelo estudante universitário Paul Hensgen. Em 2002, Jonathan Riddell assumiu o projeto refatorando o código e incluindo novas funcionalidades. No mesmo ano, o Umbrello foi integrado as aplicações do KDE utilizando o framework Qt. Em 2008, Gopala Krishna, começou a adaptação do limitado Framework QCanvas do Qt 3 para o QGraphicsView do Qt 4. Hoje o Umbrello tem uma versão para o KDE 4.6, mas a versão com a adaptação iniciada por Krishna, está instável, como consequência, não foi integrada a versão atual do Umbrello. O Qt 4 alcançou um nível maior de estabilidade com melhorias como suporte a arquitetura ModelView e um novo build system modular. O Framework Graphics View surgiu na versão 4.2 e fornece recursos para manusear e interagir com elementos gráficos 2D, e um widget para a visualização dos itens.
+
+Atualmente o Umbrello utilliza a classe Q3Canvas – a mesma classe QCanvas, renomeada apenas durante o processo de adaptação - que faz parte do Qt3Support, biblioteca que foi desenvolvida para facilitar o port do Qt 3 para Qt 4, e que não devem estar no código de produção, mas apenas no processo intermediário, devendo ser imediatamente substituítas por uma classe equivalente do Qt 4. Nesse caso, o QCanvas deve ser substituído para a classe QGraphicsView.
+
+
+. Qt3Support
+. Q3Canvas
+
+
+Objetivos:
+. O objetivo do projeto é realizar uma adaptação confiável do software utilizando ferramentas de testes automatizados que garantem a aplicação correta dos conceitos de refatoração.
+
+. Eliminar o uso do Q3Canvas do Umbrello 
+. Melhor suporte a estereótipos (um estereótipo é representado por um nome entre << >> (dois sinais de menor e dois sinas de maior). Esse símbolo geralmente vem após o elemento que esta sendo estereotipado. Por exemplo, em um diagrama de classes estereótipos podem ser utilizados para classificar o comportamento dos métodos, tais como <<construtor>> e <<getter>>)
+. Completar suporte a Undo/Reddo 
+. Escrever testes com QtTestLibs e um software para testes de Interface (Framework para desenvolvimento de testes unitários em Qt. Os testes serão escritos na última fase do projeto. Software para testes automatizados de interface da empresa Frologic. Será utilizado a medida que a refatoração resultar em um minimo de funcionalidades testáveis.)
+
+Solução
+
+O Umbrello utiliza recursos gráficos que permitem ao usuário desenhar diagramas 2D, essa é a sua principal função quanto software para diagramação UML. Logo, o projeto propõe a adaptação dos recursos do QCanvas - cerca de 30 classes são dependentes desses recursos - para o QGraphicsView utilizando técnicas de refatoração de código juntamente com ferramentas de análise estática e dinâmica, concluindo o projeto com ferramentas de testes para a garantir a continuidade das funcionalidade originais do software. 
+
+O Framework Graphics View tem uma abordagem baseada na programação model-view. Varias visualizações (QGraphicsView) podem conter única cena (QGraphicsScene), e a cena pode conter itens (QGraphicsItem) de diferentes formas geométricas. Essa arquitetura é bastante similar a do QCanvas, mas o QgraphicsItem, equivalente ao Q3CanvasItem é mais poderoso e mais fácil de usar. Por exemplo, o QGraphicsView implementa o arrastar e soltar (drag and drop) de um item em uma cena, funcionalidade inexistente no Qcanvas: “Uma das mais notáveis melhorias na nova API (QGraphicsView) é o sistema de coordenadas. Agora podemos usar coordenadas em números reais para adicionais um nível elevado de precisão a capacidade de visualização do QGraphicsView, especialmente quando utilizamos os zoom em uma cena. Isso simplifica ao ter que lidar com dads de fontes externas, como topologia, que geralmente usam coordenadas reais.” (HANSSEN, 2006)
+
+No QCanvas, a geometria dos items eram relativa ao canvas, a cena onde os items são colocados, no QGraphicsView é possível criar items compostos, items dentro de items e redimensioná-los de forma independente ou de acordo com o seu item pai. As melhorias propostas com o port para o Umbrello são na sua maioria relacionadas a perfomance e otimização de código (HANSSEN, 2006), pois o Framework Graphics View utiliza os melhores recursos do Qt4 que a partir da versão
+4.2 utiliza BSP tree19 (Binary Space Partitioning Tree) com um método de indexação que acelera a busca dos itens na cena. (SLETTA, 2010)
+
+O diagrama acima explica a arquitetura do QGraphicsView, onde o UMLDoc cria um novo objeto UMLView (QGraphicsView), que por sua vez aloca a sua UMLScene (QGraphicsScene). O mesmo UMLDoc dispara o sinal sigObjectCreated quando o usuário adiciona um novo widget na tela, tal sinal é recebido pelo slot do Diagram, slotObjectCreated, que por sua vez cria um novo UMLWidget. O Qt gerencia a comunicação entre objetos da aplicação através de signals e slots21. Um signal é emitido quando determinado evento ocorre e é tratado por um slot especificado no código da aplicação. Um slot nada mais é do que uma função que é chamada em resposta a um sinal em particular.
+
+O primeiro sprint de desenvolvimento foi basicamente um teste em cima do cronograma planejado. As primeiras alterações foram um exemplo de como não refatorar um software, pois foi contra ao que é previsto como uma boa prática de refatoração e testes, alterações pequenas e devidamente planejadas para que seja possível encontrar os erros mais rapidamente. “Refatorar siginifica alterar os programas em pequenos passos. Se você cometer um erro, é fácil de encontrá-lo.” (FOWLER, 2001)
+
+Ao começar a adaptar as primeiras classes planejadas, encontrou-se a primeira diferença entre QCanvas e QGraphicsView: o sistema de coordenadas. No QCanvas as coordenadas são em números inteiros e no QGraphicsView em números reais. Ao começar as primeiras alterações notou-se que seria necessário alterar em mais métodos do que o planejado, o que gerou muitos erros, sem o devido controle do funcionamento do software e das classes afetadas pela alteração. Para o segundo sprint, realizou-se uma análise melhor, decidindo-se tratar das coordenadas em um próximo sprint, pois é possível continuar usando as coordendas em tipo inteiro. A melhor maneira de trabalhar encontrada para realizar as alterações por partes foi manter as classes antigas e criar as novas classes em conjunto. Assim, incluir as chamadas para os novos métodos através diretivas de pré-processamento em C++ nos arquivos antigos mantendo o funcionamento dos dois e testando o funcionamento dos novos métodos. Diretivas de pré-processamento são linhas incluídas no código, precedidas pelo sinal #, logo não são consideradas declarações da linguagem de programação. Quando o pré-processador encontra essa diretiva, ele substitui qualquer ocorrência dessa declaração no resto do código. O pré-processador é executado antes da compilação, assim essa substituição é realizada antes de qualquer código ser de fato gerado pelas
+declarações da linguagem de programação propriamente dita.
+
+
+Protótipo:
+
+UMLView
+UMLViewCanvas
+WidgetBase
+UMLWidget
+UMLObject
+
+A técnica de refatoração, conforme Fowler (2001, p. 65) explica, mais utilizada foi a de dividir algumas classes que continham métodos que poderiam facilmente serem gerenciados por outra classe. A nova classe Diagram são alguns dos métodos da classe UMLView que antes gerenciavam as configurações dos diagramas. Com isso temos um código de mais fácil manutenção e correção de erros. “Se você vê a estrutura do mesmo código em mais de um lugar, você pode ter certeza que seu programa vai ser melhor se você encontrar uma forma de unificá-los.” (FOWLER, 2001)
+
+. UMLView (QGraphicsView)
+A UMLView herdava anteriormente de Q3CanvasView. Nessa classe, além da adaptação para QGraphicsView, foi necessário mudar como o zoom era tratado. Nas últimas versões do Qt, ao invés de QMatrix, utiliza-se QTransform. Qtransform difere QMatrix (obsoleto), em que é uma verdadeiro matriz 3x3, permitindo transformações de perspectiva. 
+
+. UMLViewCanvas (QGraphicsScene)
+A UMLViewCanvas é a nova UMLScene, herdando de Q3Canvas. Trata de todos os eventos ocorridos na cena. A classe mais próxima de QCanvas para a adaptação ao Framework QGraphicsView é a QGraphicsScene. A nova classe UMLScene trata de todas as configurações do diagrama (um Diagrama de Classe, um de Sequência ou um outro diagrama qualquer da UML) em cena: cor da linha, fonte e alinhamento.
+
+. Diagram (herda de QObject e QGraphicsItem)
+Nova classe extraída a partir da UMLScene, que passa a gerenciar os widgets na UMLScene. Os métodos dessa classe tratam dos widgets pertencentes a determinado diagrama em cena. Armazena as informações referentes a posição, tipo de diagrama e a lista de widgets pertencentes ao diagrama.
+
+. WidgetBase (herda de QObject)
+Classe base para o UMLWidget.
+
+. UMLObject
+Essa classe é a versão não gráfica do UMLWidget. Estes são criados e mantidos na classe UMLDoc. Essa classe contém toda a informação genérica necessária para todos os objetos UML.
+
+. UMLWidget (herda de WidgetBase e QGraphicsRectItem)
+Classe base para quase todos os elementos gráficos. A UMLWidget herdava anteriormente de Q3CanvasRectangle. A classe mais próxima para a adaptação ao Framework QGraphicsView é a QgraphicsRectItem. Essa classe mantém as informações referentes a posição de cada widget em determinado diagrama, como a posição, o tamanho e o tipo.
+
+Considerações Parciais
+Para o primeiro protótipo planejava-se conseguir uma visualização dos widgets em tela (os diagramas propriamente ditos), mas não é possível manter o QCanvasItem funcionando em uma QGraphicsScene. Com a base pronta, as classes até então refatoradas, vai ser possível realizar um trabalho mais rápido para concluir a adaptação do software, finalizar o suporte a Undo/Redo e escrever os testes até a data prevista de conclusão prosposta.

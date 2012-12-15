@@ -1,0 +1,10 @@
+sprint 1: alterações muito grandes, refazer.
+sprint 2: facade?
+não vou tentar trocar agora os qreal por inteiro, pois eu posso trabalhar com inteiro de qqr forma.
+vou tentar isolar bem o código que eu vou trabalhar e testar.
+
+Sprint 1: Classe UMLViewCanvas, LinePath, SeqLineWidget e SubsetSymbol 
+
+Sprint 2: Classe UMLView, UMLWidget, WidgetBase e
+AssociationWidget.
+

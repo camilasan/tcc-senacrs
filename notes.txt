@@ -1,0 +1,68 @@
+-> check if the recent commits to trunk if they have been ported to brunch.
+-> 03/05
+[08:55]<Riddell> I don't think he worked on new features
+[08:55] <Riddell> just porting it to qgraphicsview, which is quite new enough
+[08:56] <Riddell> I think you should look at the major differences he made and work out if it's useful to bring them over or not
+camilasan: I think if I was doing it I'd start by drawing a class diagram of the current code base to get an overview of what's in it, then work out what would need to be changed to port it to QGraphicsView, then look at what's 
+different in Gopala's codebase and how that compares to what I thought would need changed
+
+    No caso de classes que eu vou precisar de signal/slot, no meu caso,
+    onde quase todas vao precisar de QGraphicsView, a melhor opção vai ser
+    QGraphicsObject, certo?
+
+
+Nem sempre. o QGraphicsObject as vezes dificulta as coisas, porque você tem que se preocupar em implementar o paint() de todos os metodos utilizando realmente o painter, ao invés de utilizar uma classe pronta pra isso. o que *eu* faria, seria uma herança multipla de QObject + um QGraphicsItem ( por exemplo um QGraphicsSvgItem ) com o desenho das coisas, isso facilitaria em *muito* as coisas (o rox é assim )
+ 
+
+    Na versao original tem algumas classes que sao filhas de QObject, o
+    Gopala trocou por QGraphicsObject.
+
+Tomaz:
+Nem sempre. o QGraphicsObject as vezes dificulta as coisas, porque você tem que se preocupar em implementar o paint() de todos os metodos utilizando realmente o painter, ao invés de utilizar uma classe pronta pra isso. o que *eu* faria, seria uma herança multipla de QObject + um QGraphicsItem ( por exemplo um QGraphicsSvgItem ) com o desenho das coisas, isso facilitaria em *muito* as coisas (o rox é assim )
+Não sei quanta experiência ele tinha nisso, mas o Qt3 usava o QCanvas, que nunca cheguei a ver como funcionava. eu acho que se você precisa de sinais e slots na parte gráfica, o melhor meio é herdar de QObject + QGraphics*algumacoisa*Item, onde o *algumacoisa* é o qgraphicsitem em questão ( Rect, Ellipse, Pixmap, **Svg** ). Algumas coisas você vai precisar usar filhos ( uma classe com vários métodos, cada método tem que ser mostrado no visual. então cada quadradinho de método é um QGraphicsItem novo que popularia uma lista... ( só pensando alto, não sei se está implementado assim ).
+
+trunk:
+svn checkout svn+ssh://ayres@svn.kde.org/home/kde/trunk/KDE/kdesdk/umbrello/ 
+
+branches:
+svn checkout svn+ssh://ayres@svn.kde.org/home/kde/branches/work/soc-umbrello 
+
+
+Trunk
+A pasta trunk contém a cópia de produção. Ela tem as versões mais recentes dos programas considerados estáveis.
+
+Branches:A pasta branches é aquela que contém alterações em funcionalidades existentes, como correções de bugs, 
+implementação de módulos, inclusão de funcionalidades. Um branch sempre é criado a partir ou do trunk ou de uma 
+tag e sempre ao final de um ciclo de desenvolvimento dará origem a uma tag.
+
+Tags
+Quando o desenvolvimento na versão do branch está considerado estável cria-se uma uma nova tag, 
+formando assim um release. Dessa forma, uma tag é considerada uma versão que pode ser aplicada no ambiente de produção. 
+Não há alteração em tags. Uma vez fechado o pacote do branch e enviado pra uma tag, qualquer novo desenvolvimento no branch 
+resultará em uma outra tag.
+
+[18:09] <camilasan> Riddell: hi, I got this error compiling the trunk
+[18:09] <camilasan> CMake Error at CMakeLists.txt:3 (kde4_no_enable_final):
+[18:09] <camilasan>   Unknown CMake command "kde4_no_enable_final".
+[18:14] <Riddell> camilasan: probably you are compiling from the umbrello directory and not the kdesdk directory
+[18:17] <camilasan> Riddell: so if I wanna try the trunk I shoud compile from the kdesk directory? is this the right path: kde/trunk/KDE/kdesdk/umbrello/ ?
+[18:19] <Riddell> you need to  svn co svn+ssh://jriddell@svn.kde.org/home/kde/trunk/kdesdk
+[18:19] <Riddell> cd kdesdk; mkdir build; cd build; cmake -DCMAKE_INSTALL_PREFIX=/usr ..; cd umbrello; make
+[18:20] <Riddell> but that's the old QCanvas code
+[18:21] <Riddell> for the QGraphicsView code you need to svn co svn+ssh://jriddell@svn.kde.org/home/kde/branches/work/soc-umbrello/
+[18:21] <Riddell> then remove the umbrello/ directory in the checked out kdesdk and replace it with the soc-umbrello/ you just checked out
+[18:24] <camilasan> but the last version is from trunk? I am trying to do what you adviced me: check if the recent commits to trunk if they have been ported to brunch
+[18:27] <camilasan> sry if my questions are stupid but I need to write a long document to make the mind of some professors that this port is a good idea like a conclusion work for college
+[18:27] <camilasan> and make a good work plan for that
+[18:30] <Riddell> svn co svn+ssh://jriddell@svn.kde.org/home/kde/trunk/kdesdk   is trunk and yes it would be good to check that relevant commits to there are also in branches/work/soc-umbrello/
+[18:30] <Riddell> of course if you don't have my svn account you should use anonsvn
+[18:30] <Riddell> svn co svn://anonsvn.kde.org/home/kde/trunk/KDE/kdesdk
+[18:31] <Riddell> and  svn co svn://anonsvn.kde.org/home/kde/branches/work/soc-umbrello/
+[18:32] <camilasan> thanks
+
+. Complete QGraphicsView porting 
+. Better stereotypes supports 
+ Hyperlinks support 
+. Reuse KDevelop analysis for code import 
+. Complete UML2 support 
+. Complete Undo/Redo support

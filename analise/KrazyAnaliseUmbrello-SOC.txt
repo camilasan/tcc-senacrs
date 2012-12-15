@@ -1,0 +1,317 @@
+camilasan@pasargada:~> cd /home/camilasan/Projects/kde/kdesdk/soc-umbrello/
+camilasan@pasargada:~/Projects/kde/kdesdk/soc-umbrello> krazy2all --export text
+=>c++/captruefalse test in-progress.................................................................done
+=>c++/constref test in-progress.................................................................done
+=>c++/copyright test in-progress.................................................................done
+=>c++/cpp test in-progress.................................................................done
+=>c++/crashy test in-progress.................................................................done
+=>c++/doublequote_chars test in-progress.................................................................done
+=>c++/doxytags test in-progress.................................................................done
+=>c++/dpointer test in-progress.................................................................done
+=>c++/emptystrcompare test in-progress.................................................................done
+=>c++/endswithnewline test in-progress.................................................................done
+=>c++/explicit test in-progress.................................................................done
+=>c++/foreach test in-progress.................................................................done
+=>c++/i18ncheckarg test in-progress.................................................................done
+=>c++/iconnames test in-progress.................................................................done
+=>c++/includes test in-progress.................................................................done
+=>c++/inline test in-progress.................................................................done
+=>c++/license test in-progress.................................................................done
+=>c++/nullstrassign test in-progress.................................................................done
+=>c++/nullstrcompare test in-progress.................................................................done
+=>c++/operators test in-progress.................................................................done
+=>c++/passbyvalue test in-progress.................................................................done
+=>c++/postfixop test in-progress.................................................................done
+=>c++/qbytearray test in-progress.................................................................done
+=>c++/qclasses test in-progress.................................................................done
+=>c++/qmethods test in-progress.................................................................done
+=>c++/qminmax test in-progress.................................................................done
+=>c++/qobject test in-progress.................................................................done
+=>c++/sigsandslots test in-progress.................................................................done
+=>c++/spelling test in-progress.................................................................done
+=>c++/staticobjects test in-progress.................................................................done
+=>c++/strings test in-progress.................................................................done
+=>c++/syscalls test in-progress.................................................................done
+=>c++/typedefs test in-progress.................................................................done
+=>messages/rcappend test in-progress.done
+=>kpartgui/endswithnewline test in-progress.done
+=>kpartgui/i18ncheckarg test in-progress.done
+=>kpartgui/spelling test in-progress.done
+=>kpartgui/validate test in-progress.done
+=>desktop/endswithnewline test in-progress.done
+=>desktop/iconnames test in-progress.done
+=>desktop/spelling test in-progress.done
+=>desktop/validate test in-progress.done
+=>kconfigxt/endswithnewline test in-progress.done
+=>kconfigxt/i18ncheckarg test in-progress.done
+=>kconfigxt/spelling test in-progress.done
+=>kconfigxt/validate test in-progress.done
+=>designer/endswithnewline test in-progress..done
+=>designer/fixuifiles test in-progress..done
+=>designer/i18ncheckarg test in-progress..done
+=>designer/qclasses test in-progress..done
+=>designer/spelling test in-progress..done
+
+krazy2 Analysis
+
+Checkers Run = 51
+Files Processed = 676
+Total Issues = 626 ...as of May 02 2011 04:26:42 BRT
+
+== c++: For File Type c++ ==
+1. Check for TRUE and FALSE macros [captruefalse]... Ok!
+
+2. Check for methods that return 'const' refs in public classes [constref]... Ok!
+
+3. Check for an acceptable copyright [copyright]... Ok!
+
+4. Check for cpp macros and usage [cpp]... 1 issue found
+        ./umbrello/codeimport/kdevcppparser/ast.h: O/S or Compiler specific macro line#28[Q_OS_WIN32,Q_CC_SUN] (1)
+        C++ source files and non-installed headers should NOT use cpp
+        conditionals that check for a certain O/S or compiler; instead use
+        CMake HAVE_foo macros. We want to check for features discovered
+        during CMake time rather than for a specific O/S.
+
+5. Check for code that should be considered crashy. [crashy]... 512 issues found
+        ./umbrello/widgets/notewidget.cpp: line#282,310 (2)
+        Looks for not using QPointers when showing modal dialogs via
+        exec(), as discussed in <http://www.kdedevelopers.org/node/3919>
+
+6. Check single-char QString operations for efficiency [doublequote_chars]... 4 issues found
+        ./umbrello/codeimpwizard/codeimpselectpage.cpp: line#204 (1)
+        ./umbrello/codeimpwizard/treemodel.cpp: split issues line#203 (1)
+        ./umbrello/widgets/objectnodewidget.cpp: line#277 (1)
+        ./umbrello/widgets/associationwidget.cpp: starts/endsWith issues line#931 (1)
+        Adding single characters to a QString is faster if the characters
+        are QChars and not QStrings.  For example: QString path = oldpath +
+        "/" + base is better written as QString path = oldpath + '/' +
+        base. Same holds for arguments to QString::startsWith(),
+        QString::endsWith(), QString::remove(), QString::section(), and
+        QString::split(). Use QString::remove() instead of
+        QString::replace(foo,"")
+
+7. Check for unwanted doxygen tags in major versions [doxytags]... Ok!
+
+8. Check public classes with private members or d-pointer issues [dpointer]... Ok!
+
+9. Check for QString compares to "" [emptystrcompare]... Ok!
+
+10. Check that file ends with a newline [endswithnewline]... Ok!
+
+11. Check for C++ ctors that should be declared 'explicit' [explicit]... 11 issues found
+        ./umbrello/expanderbox.h: line#40 (1)
+        ./umbrello/textitem.h: line#34 (1)
+        ./umbrello/codeimpwizard/treemodel.h: line#15 (1)
+        ./umbrello/codeimpwizard/treeitem.h: line#10 (1)
+        ./umbrello/codeimpwizard/codeimpthread.h: line#40 (1)
+        ./umbrello/widgets/messagewidget.h: line#54 (1)
+        ./umbrello/widgets/associationline.h: line#51 (1)
+        ./umbrello/widgets/layoutgrid.h: line#35 (1)
+        ./umbrello/widgets/objectwidget.h: line#37 (1)
+        ./umbrello/widgets/preconditionwidget.h: line#35 (1)
+        ./umbrello/widgets/pinwidget.h: line#33 (1)
+        Make all C++ class constructors that can be used with only one
+        required argument 'explicit' to minimize wrong use of the class. Do
+        this to avoid mistaken implicit constructor ambiguities. Copy
+        constructors should not be explicit.
+
+12. Check for foreach loop issues [foreach]... 8 issues found
+        ./umbrello/foreignkeyconstraint.cpp: values or keys iteration line#221 (1)
+        ./umbrello/codeimpwizard/codeimpselectpage.cpp: non-const ref iterator line#449 (1)
+        ./umbrello/widgets/widget_utils.cpp: non-const ref iterator line#417 (1)
+        ./umbrello/widgets/associationspacemanager.cpp: non-const ref iterator line#296,345,382 (3)
+        ./umbrello/widgets/associationline.cpp: non-const ref iterator line#894,1073 (2)
+        When not using POD types (int, double, pointer, ...) you should use
+        const & for your foreach variables. There are two reasons for this:
+        1) Prevents you from the mistake of writing foreach loops that
+        modify the list, that is 'foreach(Foo f, list) f.a = f.b = f.c =
+        0;' compiles but does not modify the contents of list 2) Saves a
+        copy constructor call for each of the list elements
+
+13. Check validity of i18n calls [i18ncheckarg]... 15 issues found
+        ./umbrello/listpopupmenu.cpp: reported ambiguous message by translators; use context call to explain what it refers to line#1183
+        ./umbrello/listpopupmenu.cpp: single adjective as message, probably ambiguous; use context call to explain what it refers to line#1181
+        ./umbrello/uml.cpp: single adjective as message, probably ambiguous; use context call to explain what it refers to line#1135,1204
+        ./umbrello/basictypes.cpp: single adjective as message, probably ambiguous; use context call to explain what it refers to line#426
+        ./umbrello/codeimpwizard/treemodel.cpp: reported ambiguous message by translators; use context call to explain what it refers to line#25
+        ./umbrello/widgets/notewidget.cpp: malformed markup (unmatched tags, etc.) line#226,230,234
+        ./umbrello/refactoring/refactoringassistant.cpp: reported ambiguous message by translators; use context call to explain what it refers to line#49
+        ./umbrello/codeimport/kdevcppparser/parser.cpp: single adjective as message, probably ambiguous; use context call to explain what it refers to line#1411,1875,2377
+        ./umbrello/codeimport/kdevcppparser/parser.cpp: malformed markup (unmatched tags, etc.) line#94
+        ./umbrello/dialogs/objectnodedialog.cpp: single adjective as message, probably ambiguous; use context call to explain what it refers to line#140
+        Make the translators' job easier and detect problems in the usage
+        of the i18n() calls. When the fix is not clear, check the Techbase
+        article at
+        <http://techbase.kde.org/Development/Tutorials/Localization/i18n_Kr
+        azy> for more information.
+
+14. Check for invalid icon names [iconnames]... Ok!
+
+15. Check for proper include directives [includes]... 12 issues found
+        ./unittests/TEST_cppwriter.cpp: do not include QtModules line#21(QtTest);22(QtCore)
+        ./unittests/TEST_basictypes.cpp: do not include QtModules line#21(QtTest);22(QtCore)
+        ./unittests/TEST_classifier.cpp: do not include QtModules line#21(QtCore);22(QtTest)
+        ./unittests/TEST_pythonwriter.cpp: do not include QtModules line#21(QtTest);22(QtCore)
+        ./umbrello/umllistview.h: duplicate includes line#22,24(QtGui/QTreeWidget)
+        ./umbrello/codeimpwizard/treemodel.cpp: do not include QtModules line#8(QtGui)
+        ./umbrello/codeimpwizard/treemodel.cpp: include own header first line#12
+        ./umbrello/widgets/toolbarstateonewidget.cpp: duplicate includes line#28,30(umlscene.h)
+        Use <..> to include installed headers; <QtModule/QClass> to include
+        Qt headers from installed headers; cpp file should include their
+        own headers first (but below config.h); other rules apply, see
+        <http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+        cludes_right>. Use include guards in headers with appropriatedly
+        encoded macro names.
+
+16. Check for inline methods in public classes [inline]... Ok!
+
+17. Check for an acceptable license [license]... 5 issues found
+        ./umbrello/codeimpwizard/treemodel.cpp: missing license
+        ./umbrello/codeimpwizard/treemodel.h: missing license
+        ./umbrello/codeimpwizard/treeitem.cpp: missing license
+        ./umbrello/codeimpwizard/treeitem.h: missing license
+        ./umbrello/codeimport/kdevcppparser/skip_rule.hpp: missing license
+        Each source file must contain a license or a reference to a license
+        which states under which terms the software may be used, modified
+        and redistributed.  For details regarding KDE's licensing policy
+        please visit <http://techbase.kde.org/Policies/Licensing_Policy>.
+
+18. Check for assignments to QString::null [nullstrassign]... 1 issue found
+        ./umbrello/widgets/floatingtextwidget.cpp: line#246 (1)
+        Do not assign QString::null or QString() to a QString.  Instead use
+        the .clear() method.  For example, "str = QString::null" becomes
+        "str.clear()". When returning an empty string from a method use
+        "return QString()"  When passing an empty string use "QString()".
+
+19. Check for compares to QString::null or QString() [nullstrcompare]... 1 issue found
+        ./umbrello/codeimpwizard/codeimpstatuspage.cpp: line#175 (1)
+        Do not compare a QString to QString::null or QString().  Instead
+        use the .isEmpty() method.  For example, if(str == QString::null)
+        becomes if(str.isEmpty())
+
+20. Check for C++ operators that should be 'const' [operators]... Ok!
+
+21. Check for inappropriate pass-by-value function args [passbyvalue]... Ok!
+
+22. Check for postfix usage of ++ and -- [postfixop]... Ok!
+
+23. Check for dangerous or inefficient QByteArray usage [qbytearray]... Ok!
+
+24. Check for Qt classes that should not be used [qclasses]... 1 issue found
+        ./umbrello/codeimpwizard/codeimpthread.cpp: QMessageBox[KMessageBox] (1)
+        Don't use Qt 4 classes that are deprecated. Additionally make sure
+        to use the KDE version of some Qt GUI elements to provide a
+        consistent look and feel for the KDE desktop. The KDE classes are
+        not just adding functionalities to the Qt base class and are mostly
+        not even based on the Qt class.
+        <http://techbase.kde.org/Policies/API_to_Avoid> *Please* *refer*
+        *to* *the* *API* *documentation* *for* *details* *before* *porting*
+        *to* *the* *K* *classes*.
+
+25. Check for Qt methods that should be avoided [qmethods]... Ok!
+
+26. Check for QMIN and QMAX macros [qminmax]... Ok!
+
+27. Check for classes that should use the 'Q_OBJECT' macro [qobject]... Ok!
+
+28. Check for signals: and slots: [sigsandslots]... Ok!
+
+29. Check for spelling errors [spelling]... 11 issues found
+        ./umbrello/umlobject.h: line#141[realy] (1)
+        ./umbrello/widgets/componentwidget.cpp: line#79[atleast] (1)
+        ./umbrello/widgets/messagewidget.h: line#166[intialization] (1)
+        ./umbrello/widgets/pinwidget.cpp: line#51[intialize] (1)
+        ./umbrello/widgets/associationspacemanager.cpp: line#172[atleast] (1)
+        ./umbrello/widgets/associationline.cpp: line#175[dont] (1)
+        ./umbrello/widgets/umlwidget.cpp: line#372[overriden] (1)
+        ./umbrello/widgets/classifierwidget.cpp: line#496[dont] (1)
+        ./umbrello/widgets/objectwidget.cpp: line#252[accomodate] (1)
+        ./umbrello/widgets/statewidget.cpp: line#433[atleast] (1)
+        ./umbrello/controller/messagewidgetcontroller.cpp: line#79[dont] (1)
+        Spelling errors in comments and strings should be fixed as they may
+        show up later in API documentation, handbooks, etc.  Misspelled
+        strings make the translator's job harder. Please use US English.
+
+30. Check for improperly initialized global static objects [staticobjects]... Ok!
+
+31. Check for strings used improperly or should be i18n. [strings]... 1 issue found
+        ./umbrello/widgets/associationwidget.cpp: QLatin1String issues line#931 (1)
+        Some QString methods (like startsWith() and endsWith()) are more
+        efficient if they are passed a QLatin1String, avoiding an implicit
+        conversion from const char *.
+
+32. Check for system calls to replace by KDE or Qt equivalents [syscalls]... Ok!
+
+33. Check for typedefs that should be replaced by Qt typedefs [typedefs]... Ok!
+
+== messages: For File Type messages ==
+1. Check for appending to rc.cpp [rcappend]... Ok!
+
+== kpartgui: For File Type kpartgui ==
+1. Check that file ends with a newline [endswithnewline]... Ok!
+
+2. Check validity of i18n calls [i18ncheckarg]... Ok!
+
+3. Check for spelling errors [spelling]... Ok!
+
+4. Validates kpartgui files using 'xmllint' [validate]... Ok!
+
+== desktop: For File Type desktop ==
+1. Check that file ends with a newline [endswithnewline]... Ok!
+
+2. Check for invalid icon names [iconnames]... Ok!
+
+3. Check for spelling errors [spelling]... Ok!
+
+4. Validates desktop files using 'desktop-file-validate' [validate]... Ok!
+
+== kconfigxt: For File Type kconfigxt ==
+1. Check that file ends with a newline [endswithnewline]... Ok!
+
+2. Check validity of i18n calls [i18ncheckarg]... Ok!
+
+3. Check for spelling errors [spelling]... Ok!
+
+4. Validates KConfigXT files using 'xmllint' [validate]... 11 issues found
+        ./umbrello/umbrello.kcfg: 79: element choices: Schemas validity error : Element '{http://www.kde.org/standards/kcfg/1.0}choices': Missing child element(s). Expected is ( {http://www.kde.org/standards/kcfg/1.0}choice ).
+        ./umbrello/umbrello.kcfg: 85: element choices: Schemas validity error : Element '{http://www.kde.org/standards/kcfg/1.0}choices': Missing child element(s). Expected is ( {http://www.kde.org/standards/kcfg/1.0}choice ).
+        ./umbrello/umbrello.kcfg: 190: element choices: Schemas validity error : Element '{http://www.kde.org/standards/kcfg/1.0}choices': Missing child element(s). Expected is ( {http://www.kde.org/standards/kcfg/1.0}choice ).
+        ./umbrello/umbrello.kcfg: 196: element choices: Schemas validity error : Element '{http://www.kde.org/standards/kcfg/1.0}choices': Missing child element(s). Expected is ( {http://www.kde.org/standards/kcfg/1.0}choice ).
+        ./umbrello/umbrello.kcfg: 273: element choices: Schemas validity error : Element '{http://www.kde.org/standards/kcfg/1.0}choices': Missing child element(s). Expected is ( {http://www.kde.org/standards/kcfg/1.0}choice ).
+        ./umbrello/umbrello.kcfg: 279: element choices: Schemas validity error : Element '{http://www.kde.org/standards/kcfg/1.0}choices': Missing child element(s). Expected is ( {http://www.kde.org/standards/kcfg/1.0}choice ).
+        ./umbrello/umbrello.kcfg: 285: element choices: Schemas validity error : Element '{http://www.kde.org/standards/kcfg/1.0}choices': Missing child element(s). Expected is ( {http://www.kde.org/standards/kcfg/1.0}choice ).
+        ./umbrello/umbrello.kcfg: 317: element choices: Schemas validity error : Element '{http://www.kde.org/standards/kcfg/1.0}choices': Missing child element(s). Expected is ( {http://www.kde.org/standards/kcfg/1.0}choice ).
+        ./umbrello/umbrello.kcfg: 323: element choices: Schemas validity error : Element '{http://www.kde.org/standards/kcfg/1.0}choices': Missing child element(s). Expected is ( {http://www.kde.org/standards/kcfg/1.0}choice ).
+        ./umbrello/umbrello.kcfg: 329: element choices: Schemas validity error : Element '{http://www.kde.org/standards/kcfg/1.0}choices': Missing child element(s). Expected is ( {http://www.kde.org/standards/kcfg/1.0}choice ).
+        ./umbrello/umbrello.kcfg: 340: element choices: Schemas validity error : Element '{http://www.kde.org/standards/kcfg/1.0}choices': Missing child element(s). Expected is ( {http://www.kde.org/standards/kcfg/1.0}choice ).
+        Please make sure your .kcfg files conform to the KConfigXT schema
+
+== designer: For File Type designer ==
+1. Check that file ends with a newline [endswithnewline]... Ok!
+
+2. Check for files that need to be fixed by 'fixuifiles' [fixuifiles]... Ok!
+
+3. Check validity of i18n calls [i18ncheckarg]... 32 issues found
+        ./umbrello/codeimpwizard/codeimpstatuspage.ui: single adjective as message, probably ambiguous; use context call to explain what it refers to line#30
+        ./umbrello/codegenwizard/codegenstatuspage.ui: single adjective as message, probably ambiguous; use context call to explain what it refers to line#29
+        ./umbrello/codegenwizard/codegenoptionspage.ui: reported ambiguous message by translators; use context call to explain what it refers to line#270,275
+        ./umbrello/codegenwizard/codegenoptionspage.ui: single adjective as message, probably ambiguous; use context call to explain what it refers to line#39
+        ./umbrello/codegenerators/d/dcodegenerationformbase.ui: single adjective as message, probably ambiguous; use context call to explain what it refers to line#168,173,178,221,226,231
+        ./umbrello/codegenerators/cpp/cppcodegenerationformbase.ui: single adjective as message, probably ambiguous; use context call to explain what it refers to line#51
+        ./umbrello/codegenerators/ruby/rubycodegenerationformbase.ui: single adjective as message, probably ambiguous; use context call to explain what it refers to line#147,152,157,188,193,198
+        ./umbrello/codegenerators/java/javacodegenerationformbase.ui: single adjective as message, probably ambiguous; use context call to explain what it refers to line#168,173,178,221,226,231
+        ./umbrello/dialogs/codevieweroptionsbase.ui: single adjective as message, probably ambiguous; use context call to explain what it refers to line#106
+        ./umbrello/dialogs/diagrampropertiespage.ui: reported ambiguous message by translators; use context call to explain what it refers to line#39,207
+        ./umbrello/dialogs/umlrolepropertiesbase.ui: single adjective as message, probably ambiguous; use context call to explain what it refers to line#73,83,90,113,123
+        Make the translators' job easier and detect problems in the usage
+        of the i18n() calls. When the fix is not clear, check the Techbase
+        article at
+        <http://techbase.kde.org/Development/Tutorials/Localization/i18n_Kr
+        azy> for more information.
+
+4. Check for Qt classes that should not be used [qclasses]... Ok!
+
+5. Check for spelling errors [spelling]... Ok!
+
+camilasan@pasargada:~/Projects/kde/kdesdk/soc-umbrello> 
+

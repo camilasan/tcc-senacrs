@@ -1,0 +1,134 @@
+Umbrello allows the user to draw UML diagrams. Umbrello was ported from Qt3/KDE3 to Qt4/KDE4 but the drawing functions still rely on the old Q3Canvas. Therefore, this project proposes the port of QCanvas resources to QGraphicsView by refactoring the code. The project also adds a few features, expects to fix a number of bugs and at unit tests & gui test scripts.
+
+
+
+Name: Camila Ayres
+Email Address: smayres@gmail.com
+Freenode IRC Nick: camilasan
+IM Service and Username: gtalk - smayres
+Location (City, Country and/or Time Zone): Porto Alegre, Rio Grande do Sul, Brazil
+Proposal Title: Umbrello UML Modeller QGraphicsView Port
+Motivation for Proposal / Goal:
+
+
+Why Umbrello?
+         I'm a big fan of Umbrello. It's a Free Software graphical UML (Unified Modeling Language) editor, one of the very few of it's kind. Most UML tools are proprietary tools written in Java and Umbrello is written in C++/Qt and build on the powerful base of KDE software.
+         I realised how intersting Umbrello is when I noticed that the most of my professors suggest proprietary tools or a generic diagramming programme with few UML features to study UML at college class. Many companies use UML to help them quickly write applications and Umbrello is a Free Software tool which can do the code generation required for that!
+
+
+                 
+Problem description:
+           Umbrello was initially written in C++ for Unix by Paul Hensgen, a college student. In 2002, Jonathan Riddell took over the project to refactor it, add Qt and KDE functionality and include new features. In the same year, Umbrello became part of the KDE Software Compilation. The Graphics View Framework appeared in Qt 4.2 and provides capabilities to handle and interact with 2D graphics and a widget for displaying the items.
+           Today Umbrello uses Q3Canvas class which is the old Qt 3 QCanvas, just renamed during the process of the port. It is part of Qt3Support, a library that was developed to facilitate the porting Qt 3 to Qt 4, and is deprecated for use in in production code in favour of newer Qt 4 classes. In 2008, Gopala Krishna, then a college student, started the port from the limited QCanvas Framework from Qt 3 to QGraphicsView from Qt 4. Today Umbrello has a version for KDE 4.6, but the version with the port initiated by the student quoted above is incomplete and not shipped.
+
+ 
+
+Goals:
+
+    *  Complete QGraphicsView porting
+    *  Better stereotypes supports
+    *  Complete Undo/Redo support
+    *  Coverage of the ported classes with unit tests
+    *  Coverage of UI with Frologic Squish test scripts
+
+ 
+
+ 
+
+Implementation Details:
+
+
+Solution description:
+           Umbrello uses graphics that allow the user to draw 2D diagrams, this is its main function as UML diagramming software. However, those functions still rely on the old Q3Canvas. This project proposes the port of the QCanvas resources - about 30 classes are dependent on these resources - to QGraphicsView refactoring the code and concluding the port with tests to ensure the continuity of the original functionality of the software. The Graphics View Framework is an approach based on model-view programming. Several views (QGraphicsView) may contain one scene (QGraphicsScene), and the scene may contain items (QGraphicsItem) of different geometric shapes. This architecture is very similar to the QCanvas, but a QGraphicsItem equivalent to Q3CanvasItem is more powerful and easier to use. For example, the QGraphicsView implements the drag and drop of an item in a scene, something which is lacking in the QCanvas functionality. Another example: in QGraphicsView it is possible to use coordinates in real numbers for resulting in a high level of accuracy which is especially useful for zoom.
+         The proposed improvements to Umbrello are mostly related to performance and code optimization, because the Graphics View Framework uses the best features of Qt4. One of these is a BSP (Binary Space Partitioning) Tree with an indexing method that speeds up the search for items in the scene and is expected to improve Umbrello performance significantly. It will also make it easier to add features, like better stereotypes supports, and improve the code in the future without adding bugs thanks to the tests.
+
+ 
+
+Implementation Plan:
+          I will work in Sprints of 14 days: analysis of the problem (2 days), developing (8 days), tests (2 days) and bug fixing (2 days).
+          The analysis includes checking if it is possible to use or just refactor the code used in the first try to port Umbrello. For the tests I intend to use the community edition of Squish Software for automated tests. I have already received a positive response from Frologic that I can use their community edition.
+    
+
+  
+
+Tentative Timeline (in weekly intervals until 2 weeks after the end of GSoC):
+
+
+25 April – 08 May
+
+    * Community Bonding Period.
+    * Review Plan with Mentor.
+    * Get instructions for the work and get started!
+
+
+Sprint 1: 09 May – 22 May
+
+*UMLView, UMLViewCanvas, WidgetBase, UMLWidget
+
+    * UMLViewCanvas, LinePath, Circle, SubsetSymbol, SeqLineWidget, UMLView (Classes that implement  the view for the diagrams, graphical representation of sequence lines and that represent diagrams)
+
+
+Sprint  2: 23 May – 05 Jun
+
+    * UMLWidget, WidgetBase, AssociationWidget,  ActivityWidget, ActorWidget, ArtifactWidget, BoxWidget, ForkJoinWidget, CombinedFragmentWidget and CategoryWidget, ClassifierWidget (Class for graphical UML objects and for graphical widgets - UML Activity, Use Case Diagram, etc).
+
+
+Sprint  3: 06 Jun – 19 Jun
+
+    * Finish the port (ComponentWidget, DatatypeWidget, EntityWidget,  EnumWidget, FloatingDashLineWidget, FloatingTextWidget. NodeWidget, ObjectWidget, PackageWidget, PinWidge, PreconditionWidget,  RegionWidget, SignalWidget, StateWidget, UseCaseWidget and MessageWidget).
+
+
+Sprint  4: 20 Jun – 03 Jul
+
+    * Merge trunk/branch.
+    * Tests and bug fixing in the merged code.
+
+
+Sprint 5:  04 Jul – 17 Jul
+
+    * Work on better stereotypes supports.
+    * Complete Undo/Redo support.
+    * 11 July:Mentors and students can begin submitting mid-term evaluations.
+    * 15 July: Mid-term evaluations deadline.
+    * Mentors give students a helping hand and guidance on their projects.
+
+
+Sprint  6:  18 Jul – 31 Jul 
+
+    * Merge trunk/branch.
+    * Tests and bug fixing in the merged code.
+
+
+Sprint  7:  1 Aug – 14 Aug 
+
+    * Tests and bug fixing.
+    * 6 Aug - 12 Aug: Desktop Summit.
+    * 11 Aug: Suggested 'pencils down' date. Take a week to scrub code, write tests, improve documentation, etc.
+
+
+Sprint 8: 15 Aug – 29 Aug
+
+    * Tests and bug fixing.
+    * 22 Aug: Firm 'pencils down' date. Mentors, students and organization administrators can begin submitting final evaluations to Google.
+    * 26 Aug: Final evaluation deadline
+
+
+Sprint  9: 30 Aug –  13 Sept
+
+    * Write unit tests using QTestLib for the classes refactored in the sprints before.
+    * Work on hyperlinks support and on the reuse of KDevelop analysis for code import.
+
+ 
+
+Do you have other obligations from late May to early August (school, work, vacation, etc.)? Please note that we expect the Summer of Code to be a full-time, 40-hr a week occupation. It is important to be clear and upfront about other commitments that you may have during that time.
+             No, only college class at night during the week. I will have no college at all during July.
+
+
+About Me (let us know who you are!):
+            Hi! I am Camila Ayres from Brazil. I am in the last year of my college, I study Analysis and Systems Development. I have worked for a few years with web development and C# before. I've been around in the KDE Community for one year, giving some talks about what KDE is and how to start to contribute. I've been studying C++/Qt since then and I did work on a plugin for Quanta/KDevelop. But I want to learn more and since january I am studying and playing with QGraphicsView.
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+. para fazer:
+análise - desenvovimento - testes - bug fixing
+analise: verificar se posso usar o que o indiano usou
+testes: analise e comparação do código antigo x código novo
+testes do codigo novo
+
+. colocar os pontos apontados por Gopala como sendo problemas a serem resolvidos/implementados/melhorados
+. Título do Projeto
+. Acho que o final do teu cronograma está muito apertado. Não sei
+(ainda) o que se espera no relatório final, mas acho que seria
+interessante obter algumas métricas ao longo do projeto (Planejado vs.
+Realizado, Bugs existentes corrigidos, Bugs novos criados, Bugs
+pré-existentes encontrados, Bugs corrigidos, Taxa média de correção de
+bugs, diferença no número de linhas de código ou no número de métodos
+utilizados, etc.)
+Tu vai precisar colher esses dados ao longo do TCC, analisar tudo e
+ainda escrever no final. Não sei se tu consegue fazer isso em uma
+única sprint de 15 dias. Talvez fosse interessante reservar umas duas
+sprints.
+
+. QWidget X Items
+. QTests
+  . http://www.froglogic.com/
+  . https://projects.kde.org/projects/kde/kdelibs/repository/revisions/master/show/kdeui/tests
+  . http://www.fredemmott.co.uk/blog/2010/01/18/Qt4%20GUI%20Testing%20with%20Hooq
+    http://gitorious.org/hooq
+  . http://en.wikipedia.org/wiki/Xnee
+
+. Ferramenta de teste
+. 10.06 - Seminário de Andamento
+
+

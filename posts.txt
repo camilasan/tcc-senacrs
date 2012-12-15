@@ -1,0 +1,22 @@
+Building a sexy Umbrello
+
+Why is so sexy?
+. It is a cool open source tools for UML.
+. There is not a plenty cool open source tools for UML
+. It is the only one in KDE Dev Platform.
+. The most of the tools are developed in Java.
+. There is cool features:
+  . Automatic code generation (Ada, C++, C#, Java, perl, PHP, Python, Ruby, etc.)
+  . Import classes
+  . Import project (Ada, C++, IDL, Java, Pascal and Python only)
+
+But...
+. There is a lack of love and attention.
+
+What we need to do:
+  . Complete QGraphicsView porting 
+  . Better stereotypes supports 
+  . Hyperlinks support 
+  . Reuse KDevelop analysis for code import 
+  . Complete UML2 support 
+  . Complete Undo/Redo support
